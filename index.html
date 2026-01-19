@@ -303,27 +303,18 @@
                             </div>
 
                             <div id="card-page-3" class="card-page hidden w-full flex-1 min-h-0 flex flex-col">
-                                <div data-card-next="true" class="w-full aspect-[4/3] bg-gray-800 rounded-lg mb-5 overflow-hidden relative border border-white/10 shadow-inner cursor-pointer active:scale-[0.99] transition-transform">
-                                    <img src="./src/download.jpg" class="w-full h-full object-cover" alt="Gift">
-                                    <div class="absolute bottom-3 left-4 text-white/90 font-handwriting text-2xl">Always</div>
-                                </div>
-                                <h3 class="text-2xl font-bold text-pink-300 mb-4 font-handwriting text-center">愿你永远快乐</h3>
-                                <div id="typewriter-text-3" class="text-left text-gray-200 space-y-4 font-light leading-7 text-sm md:text-base border-l-2 border-pink-500/50 pl-4 mb-2 flex-1 min-h-0 scrollable-text"></div>
-                            </div>
-
-                            <div id="card-page-4" class="card-page hidden w-full flex-1 min-h-0 flex flex-col">
                                 <div class="w-full aspect-[4/3] bg-gray-800 rounded-lg mb-5 overflow-hidden relative border border-white/10 shadow-inner">
                                     <img src="./src/download (1).jpg" class="w-full h-full object-cover" alt="Gift">
                                     <div class="absolute bottom-3 left-4 text-white/90 font-handwriting text-2xl">留言</div>
                                 </div>
                                 <h3 class="text-2xl font-bold text-pink-300 mb-4 font-handwriting text-center">留言</h3>
-                                <div id="typewriter-text-4" class="text-left text-gray-200 space-y-4 font-light leading-7 text-sm md:text-base border-l-2 border-pink-500/50 pl-4 mb-2 flex-1 min-h-0 scrollable-text"></div>
+                                <div id="typewriter-text-3" class="text-left text-gray-200 space-y-4 font-light leading-7 text-sm md:text-base border-l-2 border-pink-500/50 pl-4 mb-2 flex-1 min-h-0 scrollable-text"></div>
                             </div>
 
                             <div class="mt-auto pt-4 flex-shrink-0 flex flex-col gap-3">
                                 <div class="flex items-center justify-between gap-3">
                                     <button id="card-prev-btn" class="safe-click-area px-4 py-2 rounded-full border border-white/30 text-gray-300 hover:bg-white/10 hover:text-white transition text-sm">上一页</button>
-                                    <div id="card-page-indicator" class="text-xs text-gray-400 tracking-widest">1 / 4</div>
+                                    <div id="card-page-indicator" class="text-xs text-gray-400 tracking-widest">1 / 3</div>
                                     <button id="card-next-btn" class="safe-click-area px-4 py-2 rounded-full border border-white/30 text-gray-300 hover:bg-white/10 hover:text-white transition text-sm">下一页</button>
                                 </div>
                                 <button id="close-card-btn" class="safe-click-area px-8 py-2 rounded-full border border-white/30 text-gray-300 hover:bg-white/10 hover:text-white transition text-sm mx-auto">收起卡片</button>
@@ -795,19 +786,17 @@
             "听说你又小了一岁",
             "Michael祝你新的一年",
             "麻将把把自摸清一色！股票天天涨停创新高📈",
-            "祝你永远快乐宝贝🥰",
             "           —— 送给最特别的你 💌"
         ];
 
         const wishes_part1 = wishes_all.slice(0, 4);
-        const wishes_part2 = wishes_all.slice(4, 7);
-        const wishes_part3 = wishes_all.slice(7,8);
+        const wishes_part2 = wishes_all.slice(4);
         const wishes_leave_message = [
             "留言：",
             "看完这几页以后，",
             "记得告诉我你最喜欢哪一句。",
-            "也把你今年的愿望，悄悄留给我。",
-            "我会一直一直在❤️。"
+            "可以把你今年的愿望悄悄留给我",
+            "看看能不能实现💗"
         ];
 
         let typewriterGeneration = 0;
@@ -854,8 +843,7 @@
         const cardPages = [
             { el: document.getElementById('card-page-1'), textId: 'typewriter-text-1', lines: wishes_part1 },
             { el: document.getElementById('card-page-2'), textId: 'typewriter-text-2', lines: wishes_part2 },
-            { el: document.getElementById('card-page-3'), textId: 'typewriter-text-3', lines: wishes_part3 },
-            { el: document.getElementById('card-page-4'), textId: 'typewriter-text-4', lines: wishes_leave_message }
+            { el: document.getElementById('card-page-3'), textId: 'typewriter-text-3', lines: wishes_leave_message }
         ];
 
         function setNavBtnState(btn, disabled, hidden = false) {
@@ -932,7 +920,7 @@
             ui.statusText.innerText = "INTERACTIVE MODE: DRAG TO ROTATE";
             cancelTypeWriterAll();
             typedCardPages.clear();
-            ['typewriter-text-1', 'typewriter-text-2', 'typewriter-text-3', 'typewriter-text-4'].forEach((id) => {
+            ['typewriter-text-1', 'typewriter-text-2', 'typewriter-text-3'].forEach((id) => {
                 const el = document.getElementById(id);
                 if (el) el.innerHTML = '';
             });
